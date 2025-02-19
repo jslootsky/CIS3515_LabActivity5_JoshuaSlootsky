@@ -9,6 +9,7 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,11 +37,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
         findViewById<View>(R.id.deleteButton).setOnClickListener {
-            if(names.isNotEmpty()) {
-                (names as MutableList).removeAt(spinner.selectedItemPosition)
-                (spinner.adapter as BaseAdapter).notifyDataSetChanged()
+            (names as MutableList).removeAt(spinner.selectedItemPosition)
+            (spinner.adapter as BaseAdapter).notifyDataSetChanged()
+            if(!spinner.adapter.isEmpty) {
                 nameTextView.text = names[0]
+            }else{
+                it.isEnabled = false
+                nameTextView.text = "no more names in the list"
             }
         }
 
