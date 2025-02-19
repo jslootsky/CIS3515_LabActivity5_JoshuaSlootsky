@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isInvisible
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity() {
                 nameTextView.text = names[0]
             }else{
                 it.isEnabled = false //disables the delete button
+                spinner.isInvisible = true //hides the spinner if the list is empty
                 nameTextView.text = "no more names in the list"
             }
         }
